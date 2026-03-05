@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untuk Natasya Aulia </title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ffd6ec, #ffc0e0, #ffb6d9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Sparkle Animation */
+.sparkle {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+    animation: fall 3s linear infinite;
+    opacity: 0.8;
+}
+
+@keyframes fall {
+    0% {transform: translateY(-10px); opacity:1;}
+    100% {transform: translateY(100vh); opacity:0;}
+}
+
+/* Floating Heart */
+.heart {
+    position: fixed;
+    color: #ff4da6;
+    font-size: 18px;
+    animation: floatUp 4s linear infinite;
+}
+
+@keyframes floatUp {
+    0% {transform: translateY(0); opacity:1;}
+    100% {transform: translateY(-100vh); opacity:0;}
+}
+
+.container {
+    display: none;
+    animation: fadeIn 1.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: scale(0.9);}
+    to {opacity: 1; transform: scale(1);}
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid white;
+    object-fit: cover;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: white;
+    font-weight: 700;
+}
+
+p {
+    color: black;
+    max-width: 350px;
+    margin: auto;
+    font-weight: 300;
+}
+
+button {
+    margin-top: 25px;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 30px;
+    background: white;
+    color: #ff4da6;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #ff4da6;
+    color: white;
+}
+
+.album {
+    display: none;
+    margin-top: 30px;
+    background: #fff0f6;
+    padding: 25px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+.album h2 {
+    color: #ff4da6;
+}
+
+.photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.photos img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Ucapan Semangat */
+.message {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #ff4da6;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+iframe {
+    display: none;
+}
+</style>
+</head>
+
+<body>
+
+<iframe id="music" width="0" height="0"
+allow="autoplay; encrypted-media"
+allowfullscreen>
+</iframe>
+
+<div id="startScreen">
+<img src="images/natasya.jpg" class="profile-pic">
+    <h1>Untuk Natasya Aulia </h1>
+    <p>Semangat jalani hari ini yaa, untuk orang ter-imut yang pernah ada </p>
+    <button onclick="openAlbum()">Buka Pesan </button>
+</div>
+
+<div class="container" id="mainContent">
+    <div class="album">
+        <h2>Album Kenangan </h2>
+        <p>Semoga hari ini penuh senyum dan hal-hal indah yaa </p>
+
+        <div class="photos">
+          <img src="images/foto1.jpg">
+          <img src="images/foto2.jpg">
+          <img src="images/foto3.jpg">
+          <img src="images/foto4.jpg">
+        </div>
+
+        <div class="message">
+            Hai Manusia ter Imut Sepanjang Masa<br><br>
+            Jangan lupa kamu itu berharga  <br>
+            Dunia mungkin kadang capek, tapi kamu lebih kuat dari yang kamu kira <br><br>
+            Tetap jadi diri kamu yang ceria, imut, dan penuh cahaya <br>
+            Semoga langkah kamu hari ini dimudahkan, senyummu diluaskan,
+            dan hatimu dipenuhi hal-hal indah <br><br>
+            Semangat yaa jalani hari ini 
+        </div>
+    </div>
+</div>
+
+<script>
+function openAlbum() {
+    document.getElementById("startScreen").style.display = "none";
+    document.getElementById("mainContent").style.display = "block";
+    document.querySelector(".album").style.display = "block";
+
+    document.getElementById("music").src =
+    "https://www.youtube.com/embed/cUnYmncAvP4?autoplay=1&loop=1&playlist=cUnYmncAvP4";
+
+    createSparkles();
+    createHearts();
+}
+
+function createSparkles() {
+    for(let i=0;i<20;i++){
+        let s=document.createElement("div");
+        s.className="sparkle";
+        s.style.left=Math.random()*100+"vw";
+        s.style.animationDuration=(2+Math.random()*3)+"s";
+        document.body.appendChild(s);
+    }
+}
+
+function createHearts() {
+    for(let i=0;i<10;i++){
+        let h=document.createElement("div");
+        h.className="heart";
+        h.innerHTML="";
+        h.style.left=Math.random()*100+"vw";
+        h.style.animationDuration=(3+Math.random()*3)+"s";
+        document.body.appendChild(h);
+    }
+}
+</script>
+
+</body>
+</html>
